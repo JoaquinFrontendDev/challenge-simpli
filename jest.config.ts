@@ -1,11 +1,18 @@
-import type { Config } from '@jest/types'
+import nextJest from 'next/jest.js'
 
-const config: Config.InitialOptions = {
-  preset: 'ts-jest',
-  testEnvironment: 'node',
-  transform: {
-    '^.+\\.(ts|tsx)$': 'babel-jest',
+const createJestConfig = nextJest({
+  dir: './',
+})
+
+/** @type {import('jest').Config} */
+
+const config: import('jest').Config = {
+  testEnvironment: 'jest-environment-jsdom',
+  moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/src/$1',
   },
+  globalSetup: './jest/globalSetup.ts',
+  globalTeardown: './jest/globalTeardown.ts',
 }
 
-export default config
+export default createJestConfig(config)
