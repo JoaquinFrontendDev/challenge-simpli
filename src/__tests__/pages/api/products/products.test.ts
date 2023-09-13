@@ -23,7 +23,6 @@ describe('/api/path/to/products/endpoint API Endpoint', () => {
 
   beforeAll(async () => {
     await connectDB()
-    // Añadir algunos productos de ejemplo
     await Product.create([
       {
         name: 'Producto 1',
@@ -192,7 +191,6 @@ describe('/api/path/to/products/endpoint API Endpoint', () => {
 
     const responseData = JSON.parse(res._getData())
 
-    // Espera un código de estado 400 porque se pasaron valores negativos
     expect(res.statusCode).toBe(400)
     expect(responseData).toEqual({ message: 'Invalid page or limit values' })
   })

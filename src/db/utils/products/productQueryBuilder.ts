@@ -13,7 +13,7 @@ export const productQueryBuilder = (
 ): ProductQuery => {
 
   function escapeRegExp(string: string) {
-    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') // $& significa toda la coincidencia
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
   }
 
   const query: ProductQuery = {}

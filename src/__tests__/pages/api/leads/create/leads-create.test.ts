@@ -85,7 +85,7 @@ describe('/api/leads/create API Endpoint', () => {
   })
 
   it('should return an error if essential data is missing', async () => {
-    const { req, res } = mockRequestResponse('POST', { name: 'Joaquin Retola' }) // Missing email and productID
+    const { req, res } = mockRequestResponse('POST', { name: 'Joaquin Retola' })
     await handler(req, res)
 
     const responseData = JSON.parse(res._getData())
