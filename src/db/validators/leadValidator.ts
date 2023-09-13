@@ -4,7 +4,7 @@ export const leadSchema = Joi.object({
   productID: Joi.string().required().messages({
     'string.base': 'El ID del producto debe ser un texto.',
     'string.empty': 'El ID del producto no debe estar vacío.',
-    'any.required': 'El ID del producto es requerido.',
+    'any.required': 'Required data missing',
   }),
   name: Joi.string().min(3).required().messages({
     'string.base': 'El nombre debe ser un texto.',
@@ -14,7 +14,7 @@ export const leadSchema = Joi.object({
   }),
   email: Joi.string().email().required().messages({
     'string.base': 'El correo electrónico debe ser un texto.',
-    'string.email': 'El correo electrónico no es válido.',
+    'string.email': 'Invalid email format',
     'string.empty': 'El correo electrónico no debe estar vacío.',
     'any.required': 'El correo electrónico es requerido.',
   }),

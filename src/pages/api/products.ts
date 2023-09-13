@@ -1,55 +1,37 @@
 import dbMiddleware from '@/db/middlewares/dbConnectionMiddleware'
+import {productQueryBuilder} from '@/db/utils/products/productQueryBuilder'
 import Product from '@/models/Product'
 import { NextApiRequest, NextApiResponse } from 'next'
 
-interface ProductQuery {
-  name?: RegExp
-  price?: {
-    $gte?: number
-    $lte?: number
-  }
-}
-
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'GET') {
-    const { page = 1, limit = 10, filter, minPrice, maxPrice } = req.query
+    let { page = 1, limit = 10, filter, minPrice, maxPrice } = req.query
 
-    const filterValue = Array.isArray(filter) ? filter[0] : filter
+    page = Number(page)
+    limit = Number(limit)
 
-    const query: ProductQuery = {}
-
-    if (filterValue) {
-      query.name = new RegExp(filterValue, 'i')
+    if (page < 1 || limit < 1 || limit > 100) {
+      return res.status(400).json({ message: 'Invalid page or limit values' })
     }
 
-    if (filterValue) {
-      query.name = new RegExp(filterValue, 'i')
-    }
-
-    if (minPrice || maxPrice) {
-      query.price = {}
-
-      if (minPrice) {
-        query.price.$gte = Number(minPrice)
-      }
-
-      if (maxPrice) {
-        query.price.$lte = Number(maxPrice)
-      }
-    }
+    const query = productQueryBuilder(
+      filter as string,
+      minPrice as string,
+      maxPrice as string,
+    )
 
     try {
       const products = await Product.find(query)
-        .limit(Number(limit))
-        .skip((Number(page) - 1) * Number(limit))
+        .limit(limit)
+        .skip((page - 1) * limit)
         .exec()
 
       const count = await Product.countDocuments(query)
 
       res.status(200).json({
         products,
-        totalPages: Math.ceil(count / Number(limit)),
-        currentPage: Number(page),
+        totalPages: Math.ceil(count / limit),
+        currentPage: page,
       })
     } catch (error) {
       res.status(500).json({ message: 'Error fetching products' })
