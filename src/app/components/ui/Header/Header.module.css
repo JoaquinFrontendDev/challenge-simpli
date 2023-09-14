@@ -1,0 +1,52 @@
+.headerContainer {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 23px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tradeMark {
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.tradeMarkSpan {
+  color: #903df7;
+}
+
+.navbarWrapper {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.navbarWrapper a {
+  text-decoration: none;
+  color: #000;
+  font-size: 20px;
+}
+
+.currencySelect {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.headerRightSide {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.currencySelect span {
+  font-size: 20px;
+}
+
+@media (max-width: 1400px) {
+  .headerContainer {
+    padding: 20px 13px;
+  }
+}

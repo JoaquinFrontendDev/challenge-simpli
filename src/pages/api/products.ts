@@ -5,7 +5,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'GET') {
-    let { page = 1, limit = 10, filter, minPrice, maxPrice } = req.query
+    let { page = 1, limit = 12, filter, minPrice, maxPrice } = req.query
 
     page = Number(page)
     limit = Number(limit)

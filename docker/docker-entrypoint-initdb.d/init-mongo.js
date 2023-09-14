@@ -2,196 +2,212 @@ db = db.getSiblingDB('challenge-simpli-db');
 
 db.products.insertMany([
   {
-    name: "Producto 1",
-    description: "Descripción del Producto 1",
+    name: "Alforjas laterales Royal Enfield 650",
+    description: "Descripción del Alforjas laterales Royal Enfield 650",
     price: 100.50,
-    imageURL: "https://example.com/product1.jpg"
+    imageURL: "/assets/images/product-1.webp"
   },
   {
-    name: "Producto 2",
-    description: "Descripción del Producto 2",
+    name: "Kit de protección basculante",
+    description: "Descripción del Kit de protección basculante",
     price: 150.75,
-    imageURL: "https://example.com/product2.jpg"
+    imageURL: "/assets/images/product-2.webp",
+    isMultiple: true
   },
   {
-    name: "Producto 3",
-    description: "Descripción del Producto 3",
+    name: "Fuel X Pro INT/GT 650",
+    description: "Descripción del Fuel X Pro INT/GT 650",
     price: 110.25,
-    imageURL: "https://example.com/product3.jpg"
+    imageURL: "/assets/images/product-3.jpg"
   },
   {
-    name: "Producto 4",
-    description: "Descripción del Producto 4",
+    name: "Pad Lateral Tanque goma 3m",
+    description: "Descripción del Pad Lateral Tanque goma 3m",
     price: 90.80,
-    imageURL: "https://example.com/product4.jpg"
+    imageURL: "/assets/images/product-4.webp",
+    isMultiple: true
   },
   {
-    name: "Producto 5",
-    description: "Descripción del Producto 5",
+    name: "Alforjas laterales Royal Enfield 650",
+    description: "Descripción del Alforjas laterales Royal Enfield 650",
     price: 105.30,
-    imageURL: "https://example.com/product5.jpg"
+    imageURL: "/assets/images/product-1.webp"
   },
   {
-    name: "Producto 6",
-    description: "Descripción del Producto 6",
+    name: "Kit de protección basculante",
+    description: "Descripción del Kit de protección basculante",
     price: 95.40,
-    imageURL: "https://example.com/product6.jpg"
+    imageURL: "/assets/images/product-2.webp",
+    isMultiple: true
   },
   {
-    name: "Producto 7",
-    description: "Descripción del Producto 7",
+    name: "Fuel X Pro INT/GT 650",
+    description: "Descripción del Fuel X Pro INT/GT 650",
     price: 140.10,
-    imageURL: "https://example.com/product7.jpg"
+    imageURL: "/assets/images/product-3.jpg"
   },
   {
-    name: "Producto 8",
-    description: "Descripción del Producto 8",
+    name: "Pad Lateral Tanque goma 3m",
+    description: "Descripción del Pad Lateral Tanque goma 3m",
     price: 130.65,
-    imageURL: "https://example.com/product8.jpg"
+    imageURL: "/assets/images/product-4.webp",
+    isMultiple: true
   },
   {
-    name: "Producto 9",
-    description: "Descripción del Producto 9",
+    name: "Alforjas laterales Royal Enfield 650",
+    description: "Descripción del Alforjas laterales Royal Enfield 650",
     price: 100.50,
-    imageURL: "https://example.com/product1.jpg"
+    imageURL: "/assets/images/product-1.webp"
   },
   {
-    name: "Producto 10",
-    description: "Descripción del Producto 10",
+    name: "Kit de protección basculante",
+    description: "Descripción del Kit de protección basculante",
     price: 150.75,
-    imageURL: "https://example.com/product2.jpg"
+    imageURL: "/assets/images/product-2.webp",
+    isMultiple: true
   },
   {
-    name: "Producto 11",
-    description: "Descripción del Producto 11",
+    name: "Fuel X Pro INT/GT 650",
+    description: "Descripción del Fuel X Pro INT/GT 650",
     price: 110.25,
-    imageURL: "https://example.com/product3.jpg"
+    imageURL: "/assets/images/product-3.jpg"
   },
   {
-    name: "Producto 12",
-    description: "Descripción del Producto 12",
+    name: "Pad Lateral Tanque goma 3m",
+    description: "Descripción del Pad Lateral Tanque goma 3m",
     price: 90.80,
-    imageURL: "https://example.com/product4.jpg"
+    imageURL: "/assets/images/product-4.webp",
+    isMultiple: true
   },
   {
-    name: "Producto 13",
-    description: "Descripción del Producto 13",
+    name: "Alforjas laterales Royal Enfield 650",
+    description: "Descripción del Alforjas laterales Royal Enfield 650",
     price: 105.30,
-    imageURL: "https://example.com/product5.jpg"
+    imageURL: "/assets/images/product-1.webp"
   },
   {
-    name: "Producto 14",
-    description: "Descripción del Producto 14",
+    name: "Kit de protección basculante",
+    description: "Descripción del Kit de protección basculante",
     price: 95.40,
-    imageURL: "https://example.com/product6.jpg"
+    imageURL: "/assets/images/product-2.webp",
+    isMultiple: true
   },
   {
-    name: "Producto 15",
-    description: "Descripción del Producto 15",
+    name: "Fuel X Pro INT/GT 650",
+    description: "Descripción del Fuel X Pro INT/GT 650",
     price: 140.10,
-    imageURL: "https://example.com/product7.jpg"
+    imageURL: "/assets/images/product-3.jpg"
   },
   {
-    name: "Producto 16",
-    description: "Descripción del Producto 16",
+    name: "Pad Lateral Tanque goma 3m",
+    description: "Descripción del Pad Lateral Tanque goma 3m",
     price: 130.65,
-    imageURL: "https://example.com/product8.jpg"
+    imageURL: "/assets/images/product-4.webp",
+    isMultiple: true
   },
   {
-    name: "Producto 17",
-    description: "Descripción del Producto 17",
+    name: "Alforjas laterales Royal Enfield 650",
+    description: "Descripción del Alforjas laterales Royal Enfield 650",
     price: 100.50,
-    imageURL: "https://example.com/product1.jpg"
+    imageURL: "/assets/images/product-1.webp"
   },
   {
-    name: "Producto 18",
-    description: "Descripción del Producto 18",
+    name: "Kit de protección basculante",
+    description: "Descripción del Kit de protección basculante",
     price: 150.75,
-    imageURL: "https://example.com/product2.jpg"
+    imageURL: "/assets/images/product-2.webp",
+    isMultiple: true
   },
   {
-    name: "Producto 19",
-    description: "Descripción del Producto 19",
+    name: "Fuel X Pro INT/GT 650",
+    description: "Descripción del Fuel X Pro INT/GT 650",
     price: 110.25,
-    imageURL: "https://example.com/product3.jpg"
+    imageURL: "/assets/images/product-3.jpg"
   },
   {
-    name: "Producto 20",
-    description: "Descripción del Producto 20",
+    name: "Pad Lateral Tanque goma 3m",
+    description: "Descripción del Pad Lateral Tanque goma 3m",
     price: 90.80,
-    imageURL: "https://example.com/product4.jpg"
+    imageURL: "/assets/images/product-4.webp",
+    isMultiple: true
   },
   {
-    name: "Producto 21",
-    description: "Descripción del Producto 21",
+    name: "Alforjas laterales Royal Enfield 650",
+    description: "Descripción del Alforjas laterales Royal Enfield 650",
     price: 105.30,
-    imageURL: "https://example.com/product5.jpg"
+    imageURL: "/assets/images/product-1.webp"
   },
   {
-    name: "Producto 22",
-    description: "Descripción del Producto 22",
+    name: "Kit de protección basculante",
+    description: "Descripción del Kit de protección basculante",
     price: 95.40,
-    imageURL: "https://example.com/product6.jpg"
+    imageURL: "/assets/images/product-2.webp",
+    isMultiple: true
   },
   {
-    name: "Producto 23",
-    description: "Descripción del Producto 23",
+    name: "Fuel X Pro INT/GT 650",
+    description: "Descripción del Fuel X Pro INT/GT 650",
     price: 140.10,
-    imageURL: "https://example.com/product7.jpg"
+    imageURL: "/assets/images/product-3.jpg"
   },
   {
-    name: "Producto 24",
-    description: "Descripción del Producto 24",
+    name: "Pad Lateral Tanque goma 3m",
+    description: "Descripción del Pad Lateral Tanque goma 3m",
     price: 130.65,
-    imageURL: "https://example.com/product8.jpg"
+    imageURL: "/assets/images/product-4.webp",
+    isMultiple: true
   },
   {
-    name: "Producto 25",
-    description: "Descripción del Producto 25",
+    name: "Alforjas laterales Royal Enfield 650",
+    description: "Descripción del Alforjas laterales Royal Enfield 650",
     price: 100.50,
-    imageURL: "https://example.com/product1.jpg"
+    imageURL: "/assets/images/product-1.webp"
   },
   {
-    name: "Producto 26",
-    description: "Descripción del Producto 26",
+    name: "Kit de protección basculante",
+    description: "Descripción del Kit de protección basculante",
     price: 150.75,
-    imageURL: "https://example.com/product2.jpg"
+    imageURL: "/assets/images/product-2.webp",
+    isMultiple: true
   },
   {
-    name: "Producto 27",
-    description: "Descripción del Producto 27",
+    name: "Fuel X Pro INT/GT 650",
+    description: "Descripción del Fuel X Pro INT/GT 650",
     price: 110.25,
-    imageURL: "https://example.com/product3.jpg"
+    imageURL: "/assets/images/product-3.jpg"
   },
   {
-    name: "Producto 28",
-    description: "Descripción del Producto 28",
+    name: "Pad Lateral Tanque goma 3m",
+    description: "Descripción del Pad Lateral Tanque goma 3m",
     price: 90.80,
-    imageURL: "https://example.com/product4.jpg"
+    imageURL: "/assets/images/product-4.webp",
+    isMultiple: true
   },
   {
-    name: "Producto 29",
-    description: "Descripción del Producto 29",
+    name: "Alforjas laterales Royal Enfield 650",
+    description: "Descripción del Alforjas laterales Royal Enfield 650",
     price: 105.30,
-    imageURL: "https://example.com/product5.jpg"
+    imageURL: "/assets/images/product-1.webp"
   },
   {
-    name: "Producto 30",
-    description: "Descripción del Producto 30",
+    name: "Kit de protección basculante",
+    description: "Descripción del Kit de protección basculante",
     price: 95.40,
-    imageURL: "https://example.com/product6.jpg"
+    imageURL: "/assets/images/product-2.webp",
+    isMultiple: true
   },
   {
-    name: "Producto 31",
-    description: "Descripción del Producto 31",
+    name: "Fuel X Pro INT/GT 650",
+    description: "Descripción del Fuel X Pro INT/GT 650",
     price: 140.10,
-    imageURL: "https://example.com/product7.jpg"
+    imageURL: "/assets/images/product-3.jpg"
   },
   {
-    name: "Producto 32",
-    description: "Descripción del Producto 32",
+    name: "Pad Lateral Tanque goma 3m",
+    description: "Descripción del Pad Lateral Tanque goma 3m",
     price: 130.65,
-    imageURL: "https://example.com/product8.jpg"
+    imageURL: "/assets/images/product-4.webp",
+    isMultiple: true
   },
 ]);
 

@@ -203,7 +203,7 @@ describe('/api/path/to/products/endpoint API Endpoint', () => {
   })
 
   it('should respect the maximum limit value', async () => {
-    const { req, res } = mockRequestResponse('GET', { page: 1, limit: 11 })
+    const { req, res } = mockRequestResponse('GET', { page: 1, limit: 13 })
     await handler(req, res)
 
     const responseData = JSON.parse(res._getData())

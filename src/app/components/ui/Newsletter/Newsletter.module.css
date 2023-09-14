@@ -1,0 +1,65 @@
+.container {
+  width: 100%;
+  height: 250px;
+  border-top: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  margin-top: 50px;
+}
+
+.title {
+  font-size: 30px;
+  margin-bottom: 12px;
+  margin-top: 10px;
+  font-weight: medium;
+}
+
+.description {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #ccc;
+}
+
+.inputContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+  max-width: 650px;
+  width: 100%;
+}
+
+.inputContainer input {
+  padding: 15px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  flex: 1;
+  font-size: 18px;
+}
+
+.ctaButton {
+  position: absolute;
+  right: 0px;
+  height: 100%;
+  background-color: #903df7;
+  color: white;
+  border: none;
+  border-radius: 0 10px 10px 0;
+  padding: 8px 30px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.ctaButton:hover {
+  background-color: #7c34c9;
+}
+
+@media (max-width: 1400px) {
+  .container {
+    padding: 13px;
+  }
+}
