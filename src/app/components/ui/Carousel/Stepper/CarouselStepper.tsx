@@ -1,6 +1,5 @@
 'use client'
 
-import {useEffect} from 'react'
 import styles from './Stepper.module.css'
 
 interface StepperProps {

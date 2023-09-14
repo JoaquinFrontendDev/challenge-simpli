@@ -14,5 +14,5 @@ const leadSchema = new mongoose.Schema(
   { versionKey: false, timestamps: true },
 )
 
-const Lead = mongoose.models.Lead || mongoose.model('Lead', leadSchema)
+const Lead = mongoose.models.Lead ?? mongoose.model('Lead', leadSchema)
 export default Lead

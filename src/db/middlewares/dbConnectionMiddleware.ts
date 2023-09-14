@@ -1,4 +1,8 @@
-import { NextApiRequest, NextApiResponse, NextApiHandler } from 'next'
+import {
+  type NextApiHandler,
+  type NextApiRequest,
+  type NextApiResponse,
+} from 'next'
 import connectDB from '../database'
 
 const dbMiddleware =

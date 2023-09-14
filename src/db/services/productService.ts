@@ -1,7 +1,8 @@
-import Product from '@/models/Product'
+import Product from '@/db/models/Product'
+import { type ProductsQueryParams } from '@/types/Api'
 
 export const fetchProducts = async (
-  query: any,
+  query: ProductsQueryParams,
   page: number,
   limit: number,
 ) => {

@@ -1,12 +1,12 @@
-import { Product } from '@/types/Product'
+import { type Product } from '@/types/Product'
 import ProductCard from '../ProductCard/ProductCard'
 import styles from './ProductList.module.css'
-import axiosInstance from '@/utils/axiosInstance'
 import SelectComponent from '@/app/components/shared/SelectComponent/SelectComponent'
+import ProductService from '@/services/ProductService'
 
 const getProducts = async () => {
-  const { data } = await axiosInstance.get('products')
-  return data.products
+  const products = await ProductService.getProducts()
+  return products
 }
 
 async function ProductList() {

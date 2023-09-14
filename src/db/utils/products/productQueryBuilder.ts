@@ -11,23 +11,22 @@ export const productQueryBuilder = (
   minPrice: string | undefined,
   maxPrice: string | undefined,
 ): ProductQuery => {
-
   function escapeRegExp(string: string) {
     return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
   }
 
   const query: ProductQuery = {}
 
-  if (filterValue) {
+  if (filterValue != null) {
     query.name = new RegExp(escapeRegExp(filterValue), 'i')
   }
 
-  if (minPrice || maxPrice) {
+  if (minPrice != null || maxPrice != null) {
     query.price = {}
-    if (minPrice) {
+    if (minPrice != null) {
       query.price.$gte = Number(minPrice)
     }
-    if (maxPrice) {
+    if (maxPrice != null) {
       query.price.$lte = Number(maxPrice)
     }
   }

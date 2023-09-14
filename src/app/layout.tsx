@@ -3,7 +3,6 @@ import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
 import Header from './components/ui/Header/Header'
 import AppContainer from './components/containers/AppContainer/AppContainer'
-import HeroCarousel from './components/ui/Carousel/HeroCarousel'
 
 const roboto = Roboto({
   subsets: ['latin'],

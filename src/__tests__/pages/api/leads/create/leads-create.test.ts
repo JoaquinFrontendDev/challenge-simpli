@@ -1,13 +1,18 @@
 /**
  * @jest-environment node
  */
-jest.mock('@/db/services/leadService.ts')
-
-import { createMocks, createRequest, createResponse } from 'node-mocks-http'
+import {
+  createMocks,
+  type createRequest,
+  type createResponse,
+} from 'node-mocks-http'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import handler from '@/pages/api/leads/create'
 import mongoose from 'mongoose'
 import * as leadService from '@/db/services/leadService'
+import { ApiError } from '@/errors/ApiError'
+
+jest.mock('@/db/services/leadService.ts')
 
 type ApiRequest = NextApiRequest & ReturnType<typeof createRequest>
 type APiResponse = NextApiResponse & ReturnType<typeof createResponse>
@@ -29,7 +34,7 @@ describe('/api/leads/create API Endpoint', () => {
   const someValidLeadData = {
     productID: 'adas1231f123f1233dxS',
     name: 'Joaquin Retola',
-    email: 'joaquin.retola@gmail.com'
+    email: 'joaquin.retola@gmail.com',
   }
 
   afterAll(async () => {
@@ -73,7 +78,9 @@ describe('/api/leads/create API Endpoint', () => {
   })
 
   it('should return an error if the lead service throws an error', async () => {
-    leadService.createLead.mockRejectedValue(new Error('Unable to save lead'))
+    leadService.createLead.mockRejectedValue(
+      new ApiError(500, 'Unable to save lead'),
+    )
 
     const { req, res } = mockRequestResponse('POST', someValidLeadData)
     await handler(req, res)

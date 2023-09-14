@@ -1,5 +1,5 @@
-import Lead from '@/models/Lead'
-import {Lead as LeadType} from '@/types/Lead'
+import Lead from '@/db/models/Lead'
+import { type Lead as LeadType } from '@/types/Lead'
 
 export async function createLead(data: LeadType) {
   const cleanedData: {
@@ -13,10 +13,10 @@ export async function createLead(data: LeadType) {
     email: data.email,
   }
 
-  if (data.message) {
+  if (data.message != null) {
     cleanedData.message = data.message
   }
 
   const lead = new Lead(cleanedData)
-  return await lead.save()
+  return lead.save()
 }

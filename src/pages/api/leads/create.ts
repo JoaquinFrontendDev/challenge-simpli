@@ -1,18 +1,30 @@
 import dbMiddleware from '@/db/middlewares/dbConnectionMiddleware'
-import { NextApiRequest, NextApiResponse } from 'next'
+import { type NextApiRequest, type NextApiResponse } from 'next'
 import errorHandlerMiddleware from '@/db/middlewares/errorHandlerMiddleware'
 import { createLead } from '@/db/services/leadService'
 import { validateLead } from '@/db/utils/leads/validateLead'
+import {
+  type CreateLeadRequestBody,
+  type CreateLeadResponse,
+} from '@/types/Api'
+import { ApiError } from '@/errors/ApiError'
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
+  const leadBody: CreateLeadRequestBody = req.body
+
   if (req.method === 'POST') {
-    const validationError = validateLead(req.body)
-    if (validationError) {
-      throw validationError
+    const validationError = validateLead(leadBody)
+    if (validationError != null) {
+      throw new ApiError(400, validationError.message ?? 'Validation error')
     }
 
-    const lead = await createLead(req.body)
-    res.status(201).json({ message: 'Lead saved successfully', lead })
+    const lead = await createLead(leadBody)
+    const response: CreateLeadResponse = {
+      message: 'Lead saved successfully',
+      lead,
+    }
+
+    res.status(201).json(response)
   } else {
     res.status(405).json({ message: 'Method not allowed' })
   }

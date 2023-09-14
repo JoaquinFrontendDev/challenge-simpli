@@ -6,6 +6,7 @@ const createJestConfig = nextJest({
 
 /** @type {import('jest').Config} */
 
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
 const config: import('jest').Config = {
   testEnvironment: 'jest-environment-jsdom',
   moduleNameMapper: {

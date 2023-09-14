@@ -12,6 +12,8 @@
 
 .carouselImageContainer img {
   border-radius: 15px;
+  object-fit: cover;
+  object-position: center;
 }
 
 @media (max-width: 1400px) {

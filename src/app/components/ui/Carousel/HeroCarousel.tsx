@@ -29,13 +29,7 @@ function HeroCarousel() {
       >
         {images.map((image, index) => (
           <div className={styles.carouselImageContainer} key={index}>
-            <Image
-              src={image}
-              alt="hero-carousel-image"
-              fill
-              objectFit="cover"
-              objectPosition="center"
-            />
+            <Image src={image} alt="hero-carousel-image" fill />
           </div>
         ))}
       </Carousel>

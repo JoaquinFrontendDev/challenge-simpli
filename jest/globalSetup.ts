@@ -4,7 +4,7 @@ const mongod = new MongoMemoryServer()
 
 module.exports = async () => {
   await mongod.start()
-  const uri = await mongod.getUri()
+  const uri = mongod.getUri()
 
   global.__MONGOD_INSTANCE__ = mongod
 

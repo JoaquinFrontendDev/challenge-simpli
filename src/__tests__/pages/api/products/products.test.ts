@@ -1,12 +1,16 @@
 /**
  * @jest-environment node
  */
-import { createMocks, createRequest, createResponse } from 'node-mocks-http'
+import {
+  createMocks,
+  type createRequest,
+  type createResponse,
+} from 'node-mocks-http'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import handler from '@/pages/api/products'
-import { Product as ProductType } from '@/types/Product'
+import { type Product as ProductType } from '@/types/Product'
 import mongoose from 'mongoose'
-import Product from '@/models/Product'
+import Product from '@/db/models/Product'
 import connectDB from '@/db/database'
 
 type ApiRequest = NextApiRequest & ReturnType<typeof createRequest>
@@ -198,7 +202,6 @@ describe('/api/path/to/products/endpoint API Endpoint', () => {
   it('should handle special characters in name filter properly', async () => {
     const { req, res } = mockRequestResponse('GET', { filter: 'Producto$' })
     await handler(req, res)
-    const responseData = JSON.parse(res._getData())
     expect(res.statusCode).toBe(200)
   })
 

@@ -1,5 +1,5 @@
 export interface Lead {
-  _id: string
+  _id?: string
   productID: string
   name: string
   email: string
