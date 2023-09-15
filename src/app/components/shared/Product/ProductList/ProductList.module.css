@@ -17,6 +17,13 @@
   gap: 50px;
 }
 
+.filtersContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
 @media (max-width: 960px) {
   .productListWrapper {
     justify-content: center;

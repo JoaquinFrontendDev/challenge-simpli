@@ -1,6 +1,6 @@
 import dbMiddleware from '@/db/middlewares/dbConnectionMiddleware'
 import errorHandlerMiddleware from '@/db/middlewares/errorHandlerMiddleware'
-import Product from '@/db/models/Product'
+import { Bike } from '@/db/models/Product'
 import { ApiError } from '@/errors/ApiError'
 import { type NextApiRequest, type NextApiResponse } from 'next'
 
@@ -11,7 +11,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
   if (req.query.id) {
     try {
-      const product = await Product.findById(req.query.id).exec()
+      const product = await Bike.findById(req.query.id).exec()
 
       if (!product) {
         throw new ApiError(404, 'Product not found')

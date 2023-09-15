@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react'
 import { type Product } from '@/types/Product'
 import { useModal } from '@/hooks/useModal'
 import Modal from '@/app/components/shared/Modal/Modal'
+import { useProductContext } from '@/context/ProductContext'
 
 export default function ProductDetailPage({
   params: { id },
@@ -18,10 +19,14 @@ export default function ProductDetailPage({
 }) {
   const [product, setProduct] = useState<Product | null>(null)
   const { isModalOpen, openModal, closeModal } = useModal()
+  const { productType } = useProductContext()
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const fetchedProduct = await ProductService.getProductById(id)
+      const fetchedProduct = await ProductService.getProductById(
+        id,
+        productType,
+      )
       setProduct(fetchedProduct)
     }
 

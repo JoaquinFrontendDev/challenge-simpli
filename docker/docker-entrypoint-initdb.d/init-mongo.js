@@ -1,6 +1,217 @@
 db = db.getSiblingDB('challenge-simpli-db');
 
-db.products.insertMany([
+db.bikes.insertMany([
+  {
+    name: "Harley Davidson Street",
+    description: "Descripción del Harley Davidson Street",
+    price: 16000,
+    imageURL: "/assets/images/moto-1.jpeg"
+  },
+  {
+    name: "Harley Davidson V-Rod",
+    description: "Descripción del Harley Davidson V-Rod",
+    price: 17600,
+    imageURL: "/assets/images/moto-2.jpeg",
+
+  },
+  {
+    name: "Harley Davidson Sportster",
+    description: "Descripción del Harley Davidson Sportster",
+    price: 12500,
+    imageURL: "/assets/images/moto-3.jpeg"
+  },
+  {
+    name: "Harley Davidson Touring",
+    description: "Descripción del Harley Davidson Touring",
+    price: 23000,
+    imageURL: "/assets/images/moto-4.webp",
+
+  },
+  {
+    name: "Harley Davidson Street",
+    description: "Descripción del Harley Davidson Street",
+    price: 16000,
+    imageURL: "/assets/images/moto-1.jpeg"
+  },
+  {
+    name: "Harley Davidson V-Rod",
+    description: "Descripción del Harley Davidson V-Rod",
+    price:17600,
+    imageURL: "/assets/images/moto-2.jpeg",
+
+  },
+  {
+    name: "Harley Davidson Sportster",
+    description: "Descripción del Harley Davidson Sportster",
+    price: 12500,
+    imageURL: "/assets/images/moto-3.jpeg"
+  },
+  {
+    name: "Harley Davidson Touring",
+    description: "Descripción del Harley Davidson Touring",
+    price: 123000,
+    imageURL: "/assets/images/moto-4.webp",
+
+  },
+  {
+    name: "Harley Davidson Street",
+    description: "Descripción del Harley Davidson Street",
+    price: 16000,
+    imageURL: "/assets/images/moto-1.jpeg"
+  },
+  {
+    name: "Harley Davidson V-Rod",
+    description: "Descripción del Harley Davidson V-Rod",
+    price: 17600,
+    imageURL: "/assets/images/moto-2.jpeg",
+
+  },
+  {
+    name: "Harley Davidson Sportster",
+    description: "Descripción del Harley Davidson Sportster",
+    price: 12500,
+    imageURL: "/assets/images/moto-3.jpeg"
+  },
+  {
+    name: "Harley Davidson Touring",
+    description: "Descripción del Harley Davidson Touring",
+    price: 23000,
+    imageURL: "/assets/images/moto-4.webp",
+
+  },
+  {
+    name: "Harley Davidson Street",
+    description: "Descripción del Harley Davidson Street",
+    price: 16000,
+    imageURL: "/assets/images/moto-1.jpeg"
+  },
+  {
+    name: "Harley Davidson V-Rod",
+    description: "Descripción del Harley Davidson V-Rod",
+    price:17600,
+    imageURL: "/assets/images/moto-2.jpeg",
+
+  },
+  {
+    name: "Harley Davidson Sportster",
+    description: "Descripción del Harley Davidson Sportster",
+    price: 12500,
+    imageURL: "/assets/images/moto-3.jpeg"
+  },
+  {
+    name: "Harley Davidson Touring",
+    description: "Descripción del Harley Davidson Touring",
+    price: 123000,
+    imageURL: "/assets/images/moto-4.webp",
+
+  },
+  {
+    name: "Harley Davidson Street",
+    description: "Descripción del Harley Davidson Street",
+    price: 16000,
+    imageURL: "/assets/images/moto-1.jpeg"
+  },
+  {
+    name: "Harley Davidson V-Rod",
+    description: "Descripción del Harley Davidson V-Rod",
+    price: 17600,
+    imageURL: "/assets/images/moto-2.jpeg",
+
+  },
+  {
+    name: "Harley Davidson Sportster",
+    description: "Descripción del Harley Davidson Sportster",
+    price: 12500,
+    imageURL: "/assets/images/moto-3.jpeg"
+  },
+  {
+    name: "Harley Davidson Touring",
+    description: "Descripción del Harley Davidson Touring",
+    price: 23000,
+    imageURL: "/assets/images/moto-4.webp",
+
+  },
+  {
+    name: "Harley Davidson Street",
+    description: "Descripción del Harley Davidson Street",
+    price: 16000,
+    imageURL: "/assets/images/moto-1.jpeg"
+  },
+  {
+    name: "Harley Davidson V-Rod",
+    description: "Descripción del Harley Davidson V-Rod",
+    price:17600,
+    imageURL: "/assets/images/moto-2.jpeg",
+
+  },
+  {
+    name: "Harley Davidson Sportster",
+    description: "Descripción del Harley Davidson Sportster",
+    price: 12500,
+    imageURL: "/assets/images/moto-3.jpeg"
+  },
+  {
+    name: "Harley Davidson Touring",
+    description: "Descripción del Harley Davidson Touring",
+    price: 123000,
+    imageURL: "/assets/images/moto-4.webp",
+
+  },
+  {
+    name: "Harley Davidson Street",
+    description: "Descripción del Harley Davidson Street",
+    price: 16000,
+    imageURL: "/assets/images/moto-1.jpeg"
+  },
+  {
+    name: "Harley Davidson V-Rod",
+    description: "Descripción del Harley Davidson V-Rod",
+    price: 17600,
+    imageURL: "/assets/images/moto-2.jpeg",
+
+  },
+  {
+    name: "Harley Davidson Sportster",
+    description: "Descripción del Harley Davidson Sportster",
+    price: 12500,
+    imageURL: "/assets/images/moto-3.jpeg"
+  },
+  {
+    name: "Harley Davidson Touring",
+    description: "Descripción del Harley Davidson Touring",
+    price: 23000,
+    imageURL: "/assets/images/moto-4.webp",
+
+  },
+  {
+    name: "Harley Davidson Street",
+    description: "Descripción del Harley Davidson Street",
+    price: 16000,
+    imageURL: "/assets/images/moto-1.jpeg"
+  },
+  {
+    name: "Harley Davidson V-Rod",
+    description: "Descripción del Harley Davidson V-Rod",
+    price:17600,
+    imageURL: "/assets/images/moto-2.jpeg",
+
+  },
+  {
+    name: "Harley Davidson Sportster",
+    description: "Descripción del Harley Davidson Sportster",
+    price: 12500,
+    imageURL: "/assets/images/moto-3.jpeg"
+  },
+  {
+    name: "Harley Davidson Touring",
+    description: "Descripción del Harley Davidson Touring",
+    price: 123000,
+    imageURL: "/assets/images/moto-4.webp",
+
+  },
+]);
+
+db.accessories.insertMany([
   {
     name: "Alforjas laterales Royal Enfield 650",
     description: "Descripción del Alforjas laterales Royal Enfield 650",

@@ -1,0 +1,17 @@
+.filtersContainer {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+.filterInput {
+  padding: 10px;
+  border: 4px solid #ccc;
+  border-radius: 10px;
+  outline: none;
+  transition: border 0.3s;
+}
+
+.filterInput:focus {
+  border-color: violet;
+}

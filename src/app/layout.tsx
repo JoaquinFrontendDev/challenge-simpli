@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
 import Header from './components/ui/Header/Header'
 import AppContainer from './components/containers/AppContainer/AppContainer'
+import { ProductProvider } from '@/context/ProductContext'
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -21,12 +22,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={roboto.className}>
-        <AppContainer>
-          <Header />
-          {children}
-        </AppContainer>
-      </body>
+      <ProductProvider>
+        <body className={roboto.className}>
+          <AppContainer>
+            <Header />
+            {children}
+          </AppContainer>
+        </body>
+      </ProductProvider>
     </html>
   )
 }

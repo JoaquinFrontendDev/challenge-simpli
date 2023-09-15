@@ -7,16 +7,17 @@ import {
   type createResponse,
 } from 'node-mocks-http'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import handler from '@/pages/api/products'
-import { type Product as ProductType } from '@/types/Product'
 import mongoose from 'mongoose'
-import Product from '@/db/models/Product'
+import { Bike } from '@/db/models/Product'
 import connectDB from '@/db/database'
+import { bikeHandler } from '@/db/utils/createProductHandler'
+import { type Bike as BikeType } from '@/types/Product'
 
 type ApiRequest = NextApiRequest & ReturnType<typeof createRequest>
 type APiResponse = NextApiResponse & ReturnType<typeof createResponse>
 
 describe('/api/path/to/products/endpoint API Endpoint', () => {
+  const handler = bikeHandler
   function mockRequestResponse(method: 'GET' = 'GET', query = {}) {
     const { req, res }: { req: ApiRequest; res: APiResponse } = createMocks({
       method,
@@ -27,24 +28,36 @@ describe('/api/path/to/products/endpoint API Endpoint', () => {
 
   beforeAll(async () => {
     await connectDB()
-    await Product.create([
+    await Bike.create([
       {
-        name: 'Producto 1',
-        description: 'Descripción del Producto 1',
+        name: 'Bike 1',
+        description: 'Descripción del Bike 1',
         price: 100.5,
-        imageURL: 'https://example.com/product1.jpg',
+        imageURL: 'https://example.com/bike1.jpg',
       },
       {
-        name: 'Producto 2',
-        description: 'Descripción del Producto 2',
-        price: 150.75,
-        imageURL: 'https://example.com/product2.jpg',
+        name: 'Bike 2',
+        description: 'Descripción del Bike 2',
+        price: 100.5,
+        imageURL: 'https://example.com/bike2.jpg',
+      },
+      {
+        name: 'Bike 3',
+        description: 'Descripción del Bike 3',
+        price: 100.5,
+        imageURL: 'https://example.com/bike3.jpg',
+      },
+      {
+        name: 'Bike 4',
+        description: 'Descripción del Bike 4',
+        price: 100.5,
+        imageURL: 'https://example.com/bike4.jpg',
       },
     ])
   })
 
   afterAll(async () => {
-    await Product.deleteMany({})
+    await Bike.deleteMany({})
     await mongoose.connection.close()
   })
 
@@ -82,7 +95,7 @@ describe('/api/path/to/products/endpoint API Endpoint', () => {
 
     const responseData = JSON.parse(res._getData())
 
-    responseData.products.forEach((product: ProductType) => {
+    responseData.products.forEach((product: BikeType) => {
       expect(product.price).toBeGreaterThanOrEqual(100)
       expect(product.price).toBeLessThanOrEqual(500)
     })
@@ -168,7 +181,7 @@ describe('/api/path/to/products/endpoint API Endpoint', () => {
 
     const responseData = JSON.parse(res._getData())
 
-    responseData.products.forEach((product: ProductType) => {
+    responseData.products.forEach((product: BikeType) => {
       expect(product.price).toBeGreaterThanOrEqual(100)
     })
   })
@@ -180,7 +193,7 @@ describe('/api/path/to/products/endpoint API Endpoint', () => {
 
     const responseData = JSON.parse(res._getData())
 
-    responseData.products.forEach((product: ProductType) => {
+    responseData.products.forEach((product: BikeType) => {
       expect(product.price).toBeLessThanOrEqual(500)
     })
   })
