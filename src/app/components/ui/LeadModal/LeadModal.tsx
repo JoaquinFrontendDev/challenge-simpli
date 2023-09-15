@@ -1,4 +1,4 @@
-import { ErrorMessage, Formik, type FormikHelpers, useField } from 'formik'
+import { Formik, type FormikHelpers } from 'formik'
 import styles from './LeadModal.module.css'
 import { validationSchema } from './validations/LeadModalValidationSchema'
 import LeadService from '@/services/LeadService'
@@ -7,12 +7,7 @@ import { useRouter } from 'next/navigation'
 import { ApiError } from '@/errors/ApiError'
 import { useState } from 'react'
 import { XCircle } from 'lucide-react'
-
-interface TextInputProps {
-  name: string
-  placeholder: string
-  onChange: React.ChangeEventHandler<HTMLInputElement>
-}
+import Input from '../../shared/Input/Input'
 
 interface LeadFormProps {
   productID: string
@@ -41,19 +36,6 @@ export default function LeadForm({ productID }: LeadFormProps) {
     }
   }
 
-  const TextInput = ({ name, placeholder, onChange }: TextInputProps) => {
-    const [field, ,] = useField(name)
-    return (
-      <input
-        type="text"
-        name={name}
-        placeholder={placeholder}
-        value={field.value}
-        onChange={onChange}
-      />
-    )
-  }
-
   return (
     <Formik
       initialValues={initialValues}
@@ -68,55 +50,27 @@ export default function LeadForm({ productID }: LeadFormProps) {
             purchase of this product.
           </p>
           <div className={styles.inputRow}>
-            <div className={styles.inputContainer}>
-              <TextInput
-                name="name"
-                placeholder="Name"
-                onChange={handleChange}
-              />
-              <ErrorMessage
-                name="name"
-                className={styles.inputErrorMessage}
-                component="div"
-              />
-            </div>
-            <div className={styles.inputContainer}>
-              <TextInput
-                name="lastName"
-                placeholder="Apellido"
-                onChange={handleChange}
-              />
-              <ErrorMessage
-                name="lastName"
-                className={styles.inputErrorMessage}
-                component="div"
-              />
-            </div>
-          </div>
-          <div className={styles.inputContainer}>
-            <TextInput
-              name="email"
-              placeholder="Correo Electrónico"
+            <Input name="name" placeholder="Name" onChange={handleChange} />
+
+            <Input
+              name="lastName"
+              placeholder="Apellido"
               onChange={handleChange}
             />
-            <ErrorMessage
-              name="email"
-              className={styles.inputErrorMessage}
-              component="div"
-            />
           </div>
-          <div className={styles.inputContainer}>
-            <TextInput
-              name="phone"
-              placeholder="Teléfono"
-              onChange={handleChange}
-            />
-            <ErrorMessage
-              name="phone"
-              className={styles.inputErrorMessage}
-              component="div"
-            />
-          </div>
+
+          <Input
+            name="email"
+            placeholder="Correo Electrónico"
+            onChange={handleChange}
+          />
+
+          <Input
+            name="phone"
+            type="number"
+            placeholder="Teléfono"
+            onChange={handleChange}
+          />
           {isErrorBannerShowing && (
             <div className={styles.repeatedEmailBanner}>
               <XCircle

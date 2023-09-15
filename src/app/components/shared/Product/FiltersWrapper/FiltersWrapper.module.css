@@ -2,16 +2,35 @@
   display: flex;
   gap: 30px;
   margin-bottom: 20px;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
 }
 
 .filterInput {
-  padding: 10px;
-  border: 4px solid #ccc;
+  padding: 20px;
+  border: 1px solid #ccc;
   border-radius: 10px;
   outline: none;
   transition: border 0.3s;
 }
 
+.filterInput input[type='number']::-webkit-inner-spin-button,
+.filterInput input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.filterInput input[type='number'] {
+  -moz-appearance: textfield;
+}
+
 .filterInput:focus {
   border-color: violet;
+}
+
+.errorText {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
 }

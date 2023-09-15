@@ -3,13 +3,14 @@
 import { type Product } from '@/types/Product'
 import ProductCard from '../ProductCard/ProductCard'
 import styles from './ProductList.module.css'
-import SelectComponent from '@/app/components/shared/SelectComponent/SelectComponent'
 import ProductService from '@/services/ProductService'
 import { useProductContext } from '@/context/ProductContext'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { ApiError } from '@/errors/ApiError'
 import Pagination from '../../Pagination/Pagination'
 import FiltersWrapper from '../FiltersWrapper/FiltersWrapper'
+import { validateFilters } from './utils/validateFilters'
+import { debounce } from '@/utils/debounce'
 
 function ProductList() {
   const { productType } = useProductContext()
@@ -17,39 +18,60 @@ function ProductList() {
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(0)
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const response = await ProductService.getProducts(
-        productType,
-        currentPage,
-      )
-      setProducts(response.products)
-      setCurrentPage(response.currentPage)
-      setTotalPages(response.totalPages)
-    }
+  const fetchProducts = async (filters: {
+    filter?: string
+    minPrice?: number | null
+    maxPrice?: number | null
+    page?: number
+  }) => {
+    const { filter, minPrice, maxPrice, page = currentPage } = filters
+    const response = await ProductService.getProducts(
+      productType,
+      page,
+      filter,
+      minPrice,
+      maxPrice,
+    )
+    setProducts(response.products)
+    setCurrentPage(response.currentPage)
+    setTotalPages(response.totalPages)
+  }
 
-    fetchProducts().catch((error) => {
+  useEffect(() => {
+    fetchProducts({ page: currentPage }).catch((error) => {
       throw new ApiError(500, error.message)
     })
   }, [productType, currentPage])
 
-  const handlePageChange = (page: number) => {
+  const handlePageChange = useCallback((page: number) => {
     setCurrentPage(page)
-  }
+  }, [])
 
-  const handleFiltersChange = (
-    filter: string,
-    minPrice: string,
-    maxPrice: string,
-  ) => {
-    // Aquí puedes llamar a la API nuevamente o hacer lo que necesites con los valores de los filtros.
-  }
+  const debouncedFetchProducts = useCallback(
+    debounce(
+      (filters: { filter: string; minPrice: number; maxPrice: number }) => {
+        fetchProducts(filters).catch((error) => {
+          throw new ApiError(500, error.message)
+        })
+      },
+      800,
+    ),
+    [],
+  )
+
+  const handleFiltersChange = useCallback(
+    (filter: string, minPrice: number | null, maxPrice: number | null) => {
+      if (validateFilters(filter, minPrice, maxPrice)) {
+        debouncedFetchProducts({ filter, minPrice, maxPrice })
+      }
+    },
+    [debouncedFetchProducts],
+  )
 
   return (
     <div className={styles.productListContainer}>
       <div className={styles.filtersContainer}>
         <FiltersWrapper onFilterChange={handleFiltersChange} />
-        <SelectComponent />
       </div>
       <div className={styles.productListWrapper}>
         {products.map((product: Product) => (

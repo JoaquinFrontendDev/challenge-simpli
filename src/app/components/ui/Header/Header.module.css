@@ -11,6 +11,8 @@
 .tradeMark {
   font-size: 40px;
   font-weight: 600;
+  text-decoration: none;
+  color: #000;
 }
 
 .tradeMarkSpan {

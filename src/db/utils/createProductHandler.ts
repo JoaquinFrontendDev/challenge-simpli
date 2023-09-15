@@ -9,7 +9,6 @@ import {
 import { productQueryBuilder } from './products/productQueryBuilder'
 import { type NextApiRequest, type NextApiResponse } from 'next'
 
-// Este es un constructor de manejadores que toma un modelo de Mongoose.
 function createProductHandler(Model: any) {
   return async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method !== 'GET') {
@@ -31,8 +30,6 @@ function createProductHandler(Model: any) {
       throw new ApiError(400, 'Invalid page or limit values')
     }
 
-    // Nota: Puedes necesitar modificar productQueryBuilder para soportar
-    // diferentes tipos de productos o adaptar la lógica de consulta según sea necesario.
     const query = productQueryBuilder(
       filter as string,
       minPrice as string,
@@ -59,7 +56,6 @@ function createProductHandler(Model: any) {
   }
 }
 
-// Luego puedes crear manejadores específicos para Bikes y Accessories:
 const bikeHandler = errorHandlerMiddleware(
   dbMiddleware(createProductHandler(Bike)),
 )

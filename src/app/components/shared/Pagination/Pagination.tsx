@@ -1,4 +1,3 @@
-// Pagination.js
 import styles from './Pagination.module.css'
 
 interface PaginationProps {

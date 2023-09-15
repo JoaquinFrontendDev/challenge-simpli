@@ -1,51 +1,65 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './FiltersWrapper.module.css'
+import SelectComponent from '../../SelectComponent/SelectComponent'
 
 interface FiltersProps {
-  onFilterChange: (filter: string, minPrice: string, maxPrice: string) => void
+  onFilterChange: (filter: string, minPrice: number, maxPrice: number) => void
 }
 
 function FiltersWrapper({ onFilterChange }: FiltersProps) {
-  const [filter, setFilter] = useState('')
-  const [minPrice, setMinPrice] = useState('')
-  const [maxPrice, setMaxPrice] = useState('')
+  const [filters, setFilters] = useState({
+    filter: '',
+    minPrice: null as number | null,
+    maxPrice: null as number | null,
+  })
 
-  const handleInputChange = () => {
-    onFilterChange(filter, minPrice, maxPrice)
-  }
+  useEffect(() => {
+    onFilterChange(
+      filters.filter,
+      Number(filters.minPrice),
+      Number(filters.maxPrice),
+    )
+  }, [filters])
 
   return (
     <div className={styles.filtersContainer}>
-      <input
-        type="text"
-        placeholder="Buscar producto..."
-        value={filter}
-        onChange={(e) => {
-          setFilter(e.target.value)
-          handleInputChange()
-        }}
-        className={styles.filterInput}
-      />
-      <input
-        type="number"
-        placeholder="Precio mínimo"
-        value={minPrice}
-        onChange={(e) => {
-          setMinPrice(e.target.value)
-          handleInputChange()
-        }}
-        className={styles.filterInput}
-      />
-      <input
-        type="number"
-        placeholder="Precio máximo"
-        value={maxPrice}
-        onChange={(e) => {
-          setMaxPrice(e.target.value)
-          handleInputChange()
-        }}
-        className={styles.filterInput}
-      />
+      <div className={styles.filterInput}>
+        <input
+          type="text"
+          placeholder="Buscar producto..."
+          value={filters.filter}
+          onChange={(e) => {
+            setFilters((prev) => ({ ...prev, filter: e.target.value }))
+          }}
+        />
+      </div>
+      <div className={styles.filterInput}>
+        <input
+          type="number"
+          placeholder="Precio mínimo"
+          value={filters.minPrice ?? ''}
+          onChange={(e) => {
+            setFilters((prev) => ({
+              ...prev,
+              minPrice: e.target.value ? parseFloat(e.target.value) : null,
+            }))
+          }}
+        />
+      </div>
+      <div className={styles.filterInput}>
+        <input
+          type="number"
+          placeholder="Precio máximo"
+          value={filters.maxPrice ?? ''}
+          onChange={(e) => {
+            setFilters((prev) => ({
+              ...prev,
+              maxPrice: e.target.value ? parseFloat(e.target.value) : null,
+            }))
+          }}
+        />
+      </div>
+      <SelectComponent />
     </div>
   )
 }
