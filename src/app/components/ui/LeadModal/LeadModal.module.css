@@ -1,0 +1,84 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.inputRow {
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+}
+
+.inputContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputContainer input {
+  padding: 15px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  flex: 1;
+  font-size: 18px;
+  max-height: 55px;
+}
+
+.inpuContainer input:focus {
+  border-color: #aaa;
+}
+
+.inputErrorMessage {
+  color: red;
+  margin-top: 5px;
+}
+
+.formTitle {
+  font-size: 25px;
+}
+
+.formDescription {
+  margin: 13px 0;
+  font-size: 18px;
+  color: #aaa;
+}
+
+.formCta {
+  text-decoration: none;
+  font-size: 20px;
+  background-color: #903df7;
+  padding: 20px 40px;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: normal;
+  width: 100%;
+  cursor: pointer;
+}
+
+.formCta:hover {
+  opacity: 0.9;
+}
+
+.repeatedEmailBanner {
+  width: 100%;
+  border: 2px solid #C62729;
+  border-radius: 10px;
+  background-color: #F9EBEB;
+  padding: 20px 30px;
+  color: #C62729;
+  position: relative;
+}
+
+.closeButton {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  cursor: pointer;
+}
+
+@media (max-width: 650px) {
+  .inputRow {
+    flex-direction: column;
+  }
+}

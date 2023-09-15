@@ -1,11 +1,15 @@
+'use client'
+
 import Image from 'next/image'
 import styles from './ProductCard.module.css'
+import Link from 'next/link'
 
 interface ProductCardProps {
   image: string
   name: string
   price: number
   isMultiple?: boolean
+  id?: string
 }
 
 function ProductCard({
@@ -13,6 +17,7 @@ function ProductCard({
   name,
   price,
   isMultiple = false,
+  id,
 }: ProductCardProps) {
   return (
     <div className={styles.cardWrapper}>
@@ -23,7 +28,9 @@ function ProductCard({
         </div>
         <h2 className={styles.productName}>{name}</h2>
         <p className={styles.productPrice}>{`$${price}`}</p>
-        <button className={styles.ctaButton}>Ver más</button>
+        <Link className={styles.ctaButton} href={`products/${id}`}>
+          Ver más
+        </Link>
       </div>
     </div>
   )

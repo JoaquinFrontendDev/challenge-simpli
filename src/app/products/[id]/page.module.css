@@ -1,0 +1,64 @@
+.productDetailsContainer {
+  display: flex;
+  max-width: 1400px;
+  margin: 0 auto;
+  height: calc(100vh - 87px);
+  align-items: center;
+  justify-content: center;
+}
+
+.productDetailsImage {
+  flex: 1;
+  position: relative;
+  height: 450px;
+}
+
+.productDetailsImage img {
+  object-fit: contain;
+  object-position: center;
+}
+
+.productDetailsRightBox {
+  max-width: 600px;
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: flex-start;
+  gap: 10px;
+  place-items: flex-end;
+}
+
+.rightBoxContent {
+  width: 100%;
+}
+
+.rightBoxContentTitle {
+  font-size: 40px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.rightBoxContentPrice {
+  font-size: 22px;
+  font-weight: 300;
+  margin-bottom: 40px;
+  color: #444;
+}
+
+.rightBoxButtonWrapper {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.rightBoxDropdown {
+  width: 100%;
+  margin-top: 40px;
+  padding: 10px 0;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}

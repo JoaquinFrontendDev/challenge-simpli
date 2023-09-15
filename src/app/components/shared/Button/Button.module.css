@@ -1,0 +1,25 @@
+.defaultButton, .primaryButton {
+  padding: 20px 16px;
+  font-size: 18px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: opacity 300ms ease-in-out;
+  max-width: 300px;
+  width: 100%;
+  text-align: left;
+  border-radius: 10px;
+  font-weight: 300;
+}
+
+.defaultButton {
+  background-color: #404040;
+}
+
+.primaryButton {
+  background-color: #903DF7;
+}
+
+.defaultButton:hover, .primaryButton:hover {
+  opacity: 0.9;
+}

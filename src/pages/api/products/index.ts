@@ -7,7 +7,7 @@ import {
 } from '@/types/Api'
 import { type NextApiRequest, type NextApiResponse } from 'next'
 import { ApiError } from '@/errors/ApiError'
-import errorHandlerMiddleware from '@/db/middlewares/errorHandlerMiddleware' // Importa el middleware
+import errorHandlerMiddleware from '@/db/middlewares/errorHandlerMiddleware'
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {

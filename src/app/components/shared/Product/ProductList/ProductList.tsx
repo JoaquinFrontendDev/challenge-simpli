@@ -19,6 +19,7 @@ async function ProductList() {
         {products.map((product: Product) => (
           <ProductCard
             key={product._id}
+            id={product._id}
             image={product.imageURL}
             name={product.name}
             price={product.price}

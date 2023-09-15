@@ -21,10 +21,12 @@
     "eslint": "^8.0.1",
     "eslint-config-next": "13.4.19",
     "eslint-plugin-n": "^16.1.0",
+    "formik": "^2.4.4",
     "joi": "^17.10.1",
     "lucide-react": "^0.277.0",
     "mongoose": "^7.5.1",
     "next": "13.4.19",
+    "next-navigation": "^1.0.6",
     "node-mocks-http": "^1.13.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -32,7 +34,8 @@
     "react-responsive-carousel": "^3.2.23",
     "styled-components": "^6.0.7",
     "ts-jest": "^29.1.1",
-    "typescript": "*"
+    "typescript": "*",
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.22.17",

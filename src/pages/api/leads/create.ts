@@ -8,6 +8,7 @@ import {
   type CreateLeadResponse,
 } from '@/types/Api'
 import { ApiError } from '@/errors/ApiError'
+import Lead from '@/db/models/Lead'
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   const leadBody: CreateLeadRequestBody = req.body
@@ -16,6 +17,11 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     const validationError = validateLead(leadBody)
     if (validationError != null) {
       throw new ApiError(400, validationError.message ?? 'Validation error')
+    }
+
+    const existingLead = await Lead.findOne({ email: leadBody.email })
+    if (existingLead) {
+      throw new ApiError(400, 'Bad Request')
     }
 
     const lead = await createLead(leadBody)

@@ -18,3 +18,13 @@ export const fetchProducts = async (
 
   return { products, count }
 }
+
+export const fetchProductById = async (productId: string) => {
+  const product = await Product.findById(productId).exec()
+
+  if (product == null) {
+    throw new Error('Product not found')
+  }
+
+  return product
+}
