@@ -13,6 +13,6 @@
 }
 
 .activeStep {
-  background-color: #903DF7;
+  background-color: var(--primary-color);
   border: none;
 }

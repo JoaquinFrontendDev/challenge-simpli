@@ -1,5 +1,5 @@
 import HeroCarousel from './components/ui/Carousel/HeroCarousel'
-import ProductList from './components/shared/Product/ProductList/ProductList'
+import ProductList from './components/ui/Product/ProductList/ProductList'
 import Newsletter from './components/ui/Newsletter/Newsletter'
 import Footer from './components/ui/Footer/Footer'
 

@@ -9,7 +9,7 @@ import { useCallback } from 'react'
 enum ProductTypes {
   BIKES = 'bikes',
   ACCESSORIES = 'accessories',
-  APPAREL = 'apparel', // Aunque no lo estés usando ahora, es útil tenerlo definido
+  APPAREL = 'apparel',
 }
 
 function Header() {

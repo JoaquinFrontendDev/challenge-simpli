@@ -51,7 +51,7 @@
 
 .ctaButton {
   padding: 10px 15px;
-  background-color: #903DF7;
+  background-color: var(--primary-color);
   color: #fff;
   border: none;
   cursor: pointer;

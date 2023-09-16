@@ -1,34 +1,109 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Challenge-Simpli
 
-## Getting Started
+A Full-Stack application designed to manage brands and their product offerings.
 
-First, run the development server:
+## Requirements
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- Node.js v16 or higher
+- Docker
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Installation and Execution
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Clone the Repository:**
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   ```bash
+   git clone https://github.com/your_username/challenge-simpli.git
+   ```
 
-## Learn More
+2. **Navigate to the Project Directory:**
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   cd challenge-simpli
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Start the MongoDB Container with Docker:**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   ```bash
+   docker-compose up -d
+   ```
 
-## Deploy on Vercel
+   This step not only creates a database from scratch within a Docker container but also preloads it with default data for immediate use.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. **Install Dependencies:**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+   ```bash
+   npm install / yarn install
+   ```
+
+5. **Run the Application Locally:**
+
+   ```bash
+   npm run dev
+   ```
+
+6. **Execute Tests:**
+
+   ```bash
+   npm run test
+   ```
+
+   This command runs all tests, covering database connections and various use cases, including edge cases, for the application's endpoints.
+
+## Development Journey
+
+This project aimed to fulfill the following requirements:
+
+**Mandatory**
+
+- Develop a responsive web application and a supporting REST API.
+
+**Expected Features**
+
+- Product and Accessory Listing:
+  This section displays a product list using cards. Each card includes a product image, name or model, and price. Clicking on a card redirects users to the product detail page. The product list supports pagination.
+
+- Product Details:
+  This section provides detailed information about a product, including images, name, description, price, and a call-to-action (CTA) button.
+
+- CTA Functionality:
+  Clicking the CTA button opens a modal or a new page to collect user information regarding the product. This information is saved in the database as a "Lead."
+
+- Endpoint Creation:
+
+  Develop endpoints for:
+  - Listing, paginating, and filtering products.
+  - Storing leads.
+
+**Development Workflow**
+
+- Project Initialization:
+
+  Set up the project using Next.js and TypeScript.
+  Configure essential dependencies and tools, including ESLint and Prettier.
+
+- Model and Schema Definitions:
+
+  Create TypeScript models based on the defined structures.
+  Define Mongoose schemas for data handling.
+
+- MongoDB Configuration:
+
+  Install Mongoose and configure the MongoDB connection.
+
+- Endpoint Implementation:
+
+- Frontend Development:
+
+  Develop the frontend by creating components, pages, and other user interface elements. Connect these elements to your endpoints through API calls.
+
+- Testing:
+
+  Implement tests incrementally, covering typical scenarios as well as edge cases.
+
+- Optimizations and Finalization:
+
+  Implement any additional optimizations, such as Server-Side Rendering (SSR), to enhance SEO and performance.
+
+## Final Considerations
+
+This project presented a rewarding challenge, prompting me to quickly learn and implement technologies like Jest and Docker. It allowed me to take complete ownership of a project from inception to completion. While I aimed for precision throughout, there is always room for improvement.

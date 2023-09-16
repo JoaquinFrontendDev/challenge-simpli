@@ -12,12 +12,14 @@ import FiltersWrapper from '../FiltersWrapper/FiltersWrapper'
 import { validateFilters } from './utils/validateFilters'
 import { debounce } from '@/utils/debounce'
 import SkeletonProductCard from '../SkeletonProductCard/SkeletonProductCard'
+import NoResults from '../NoResults/NoResults'
 
 function ProductList() {
   const { productType } = useProductContext()
   const [products, setProducts] = useState<Product[]>([])
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(0)
+  const [isLoading, setIsLoading] = useState(true)
 
   const fetchProducts = async (filters: {
     filter?: string
@@ -25,6 +27,7 @@ function ProductList() {
     maxPrice?: number | null
     page?: number
   }) => {
+    setIsLoading(true)
     const { filter, minPrice, maxPrice, page = currentPage } = filters
     const response = await ProductService.getProducts(
       productType,
@@ -36,6 +39,7 @@ function ProductList() {
     setProducts(response.products)
     setCurrentPage(response.currentPage)
     setTotalPages(response.totalPages)
+    setIsLoading(false)
   }
 
   useEffect(() => {
@@ -75,20 +79,24 @@ function ProductList() {
         <FiltersWrapper onFilterChange={handleFiltersChange} />
       </div>
       <div className={styles.productListWrapper}>
-        {!products.length
-          ? Array(12)
-              .fill(0)
-              .map((_, idx) => <SkeletonProductCard key={idx} />)
-          : products.map((product: Product) => (
-              <ProductCard
-                key={product._id}
-                id={product._id}
-                image={product.imageURL}
-                name={product.name}
-                price={product.price}
-                isMultiple={product?.isMultiple}
-              />
-            ))}
+        {isLoading ? (
+          Array(12)
+            .fill(0)
+            .map((_, idx) => <SkeletonProductCard key={idx} />)
+        ) : products.length ? (
+          products.map((product: Product) => (
+            <ProductCard
+              key={product._id}
+              id={product._id}
+              image={product.imageURL}
+              name={product.name}
+              price={product.price}
+              isMultiple={product?.isMultiple}
+            />
+          ))
+        ) : (
+          <NoResults />
+        )}
       </div>
       <Pagination
         totalPages={totalPages}

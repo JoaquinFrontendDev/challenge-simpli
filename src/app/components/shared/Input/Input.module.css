@@ -15,7 +15,7 @@
 }
 
 .inputContainer input:focus {
-  border-color: #903df7;
+  border-color: var(--primary-color);
 }
 
 .inputErrorMessage {

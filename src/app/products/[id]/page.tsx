@@ -11,8 +11,9 @@ import { type Product } from '@/types/Product'
 import { useModal } from '@/hooks/useModal'
 import Modal from '@/app/components/shared/Modal/Modal'
 import { useProductContext } from '@/context/ProductContext'
-import SkeletonProductDetail from '@/app/components/shared/Product/SkeletonProductDetail/SkeletonProductDetail'
+import SkeletonProductDetail from '@/app/components/ui/Product/SkeletonProductDetail/SkeletonProductDetail'
 import { ApiError } from '@/errors/ApiError'
+import Link from 'next/link'
 
 enum ProductDetailTexts {
   BUTTON_LABEL = "I'm interested",
@@ -58,6 +59,9 @@ export default function ProductDetailPage({
         <Modal isOpen={isModalOpen} onClose={closeModal}>
           <LeadModal productID={id} />
         </Modal>
+        <Link href="/" className={styles.backButton}>
+          Go back
+        </Link>
         <div className={styles.productDetailsImage}>
           <Image src={product.imageURL} alt={product.name} fill />
         </div>

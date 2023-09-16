@@ -18,8 +18,8 @@ export default function ThankYouPage() {
         />
       </div>
       <h2 className={styles.thankYouPageText}>{ThankYouPageTexts.TITLE}</h2>
-      <Link href="/">
-        <a className={styles.thankYouPageCta}>{ThankYouPageTexts.CTA}</a>
+      <Link href="/" className={styles.thankYouPageCta}>
+        {ThankYouPageTexts.CTA}
       </Link>
     </div>
   )

@@ -24,7 +24,7 @@
 .formCta {
   text-decoration: none;
   font-size: 20px;
-  background-color: #903df7;
+  background-color: var(--primary-color);
   padding: 20px 40px;
   border-radius: 10px;
   color: #fff;
