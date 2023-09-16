@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import styles from './FiltersWrapper.module.css'
-import SelectComponent from '../../SelectComponent/SelectComponent'
 
 interface FiltersProps {
   onFilterChange: (filter: string, minPrice: number, maxPrice: number) => void
@@ -59,7 +58,6 @@ function FiltersWrapper({ onFilterChange }: FiltersProps) {
           }}
         />
       </div>
-      <SelectComponent />
     </div>
   )
 }

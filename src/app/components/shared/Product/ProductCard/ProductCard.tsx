@@ -4,6 +4,10 @@ import Image from 'next/image'
 import styles from './ProductCard.module.css'
 import Link from 'next/link'
 
+enum PRODUCT_CARD {
+  BUTTON_TEXT = 'Ver más',
+}
+
 interface ProductCardProps {
   image: string
   name: string
@@ -29,7 +33,7 @@ function ProductCard({
         <h2 className={styles.productName}>{name}</h2>
         <p className={styles.productPrice}>{`$${price}`}</p>
         <Link className={styles.ctaButton} href={`products/${id}`}>
-          Ver más
+          {PRODUCT_CARD.BUTTON_TEXT}
         </Link>
       </div>
     </div>

@@ -11,6 +11,7 @@ import Pagination from '../../Pagination/Pagination'
 import FiltersWrapper from '../FiltersWrapper/FiltersWrapper'
 import { validateFilters } from './utils/validateFilters'
 import { debounce } from '@/utils/debounce'
+import SkeletonProductCard from '../SkeletonProductCard/SkeletonProductCard'
 
 function ProductList() {
   const { productType } = useProductContext()
@@ -74,16 +75,20 @@ function ProductList() {
         <FiltersWrapper onFilterChange={handleFiltersChange} />
       </div>
       <div className={styles.productListWrapper}>
-        {products.map((product: Product) => (
-          <ProductCard
-            key={product._id}
-            id={product._id}
-            image={product.imageURL}
-            name={product.name}
-            price={product.price}
-            isMultiple={product?.isMultiple}
-          />
-        ))}
+        {!products.length
+          ? Array(12)
+              .fill(0)
+              .map((_, idx) => <SkeletonProductCard key={idx} />)
+          : products.map((product: Product) => (
+              <ProductCard
+                key={product._id}
+                id={product._id}
+                image={product.imageURL}
+                name={product.name}
+                price={product.price}
+                isMultiple={product?.isMultiple}
+              />
+            ))}
       </div>
       <Pagination
         totalPages={totalPages}

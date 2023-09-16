@@ -4,9 +4,23 @@ import { useProductContext } from '@/context/ProductContext'
 import styles from './Header.module.css'
 import { ChevronDown, DollarSign, ShoppingBasket, User2 } from 'lucide-react'
 import Link from 'next/link'
+import { useCallback } from 'react'
+
+enum ProductTypes {
+  BIKES = 'bikes',
+  ACCESSORIES = 'accessories',
+  APPAREL = 'apparel', // Aunque no lo estés usando ahora, es útil tenerlo definido
+}
 
 function Header() {
   const { setProductType, productType } = useProductContext()
+
+  const handleProductTypeChange = useCallback(
+    (type: ProductTypes) => {
+      setProductType(type)
+    },
+    [setProductType],
+  )
 
   return (
     <div className={styles.headerContainer}>
@@ -15,17 +29,19 @@ function Header() {
       </Link>
       <div className={styles.navbarWrapper}>
         <div
-          className={productType === 'bikes' ? styles.active : ''}
+          className={productType === ProductTypes.BIKES ? styles.active : ''}
           onClick={() => {
-            setProductType('bikes')
+            handleProductTypeChange(ProductTypes.BIKES)
           }}
         >
           Bikes
         </div>
         <div
-          className={productType === 'accessories' ? styles.active : ''}
+          className={
+            productType === ProductTypes.ACCESSORIES ? styles.active : ''
+          }
           onClick={() => {
-            setProductType('accessories')
+            handleProductTypeChange(ProductTypes.ACCESSORIES)
           }}
         >
           Accesories

@@ -6,11 +6,18 @@ import styles from './page.module.css'
 import Button from '@/app/components/shared/Button/Button'
 import Dropdown from '@/app/components/shared/Dropdown/Dropdown'
 import LeadModal from '@/app/components/ui/LeadModal/LeadModal'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { type Product } from '@/types/Product'
 import { useModal } from '@/hooks/useModal'
 import Modal from '@/app/components/shared/Modal/Modal'
 import { useProductContext } from '@/context/ProductContext'
+import SkeletonProductDetail from '@/app/components/shared/Product/SkeletonProductDetail/SkeletonProductDetail'
+import { ApiError } from '@/errors/ApiError'
+
+enum ProductDetailTexts {
+  BUTTON_LABEL = "I'm interested",
+  DROPDOWN_LABEL = 'Click to see more',
+}
 
 export default function ProductDetailPage({
   params: { id },
@@ -31,44 +38,48 @@ export default function ProductDetailPage({
     }
 
     fetchProduct().catch((error) => {
-      console.error('There was an error fetching the product:', error)
+      throw new ApiError(error.code, 'There was an error fetching the product:')
     })
-  }, [])
+  }, [id, productType])
 
-  if (!product) return <p>Cargando...</p>
+  const handleModalOpen = useCallback(() => {
+    openModal()
+  }, [openModal])
 
-  return (
-    <div className={styles.productDetailsContainer}>
-      <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <LeadModal productID={id} />
-      </Modal>
-      <div className={styles.productDetailsImage}>
-        <Image src={product.imageURL} alt={product.name} fill />
+  if (!product)
+    return (
+      <div className={styles.productDetailsContainer}>
+        <SkeletonProductDetail />
       </div>
-      <div className={styles.productDetailsRightBox}>
-        <div className={styles.rightBoxContent}>
-          <h2 className={styles.rightBoxContentTitle}>{product.name}</h2>
-          <p className={styles.rightBoxContentPrice}>{`USD ${Math.ceil(
-            product.price,
-          )}`}</p>
-          <div className={styles.rightBoxButtonWrapper}>
-            <Button
-              label="I'm interested"
-              onClick={() => {
-                openModal()
-              }}
-            />
-          </div>
-          <div className={styles.rightBoxDropdown}>
-            <Dropdown label="Haz clic para ver más">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi.
-            </Dropdown>
+    )
+  if (product)
+    return (
+      <div className={styles.productDetailsContainer}>
+        <Modal isOpen={isModalOpen} onClose={closeModal}>
+          <LeadModal productID={id} />
+        </Modal>
+        <div className={styles.productDetailsImage}>
+          <Image src={product.imageURL} alt={product.name} fill />
+        </div>
+        <div className={styles.productDetailsRightBox}>
+          <div className={styles.rightBoxContent}>
+            <h2 className={styles.rightBoxContentTitle}>{product.name}</h2>
+            <p className={styles.rightBoxContentPrice}>{`USD ${Math.ceil(
+              product.price,
+            )}`}</p>
+            <div className={styles.rightBoxButtonWrapper}>
+              <Button
+                label={ProductDetailTexts.BUTTON_LABEL}
+                onClick={handleModalOpen}
+              />
+            </div>
+            <div className={styles.rightBoxDropdown}>
+              <Dropdown label={ProductDetailTexts.DROPDOWN_LABEL}>
+                {product.description}
+              </Dropdown>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  )
+    )
 }

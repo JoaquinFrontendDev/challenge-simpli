@@ -1,38 +1,9 @@
 import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react'
 import styles from './Footer.module.css'
 import Link from 'next/link'
+import { footerLinks } from '@/constants/footerLinks'
 
 function Footer() {
-  const allListItems = [
-    [
-      { name: 'Bykes' },
-      { name: 'Category 1' },
-      { name: 'Category 2' },
-      { name: 'Category 3' },
-    ],
-    [
-      { name: 'Accesories' },
-      { name: 'Equipaje' },
-      { name: 'Carrocería' },
-      { name: 'Asientos' },
-      { name: 'Protección' },
-      { name: 'Controles' },
-    ],
-    [
-      { name: 'Apparel' },
-      { name: 'Lifestyle accesory' },
-      { name: 'Merchandising' },
-      { name: 'Ridding essentials' },
-      { name: 'Lifestyle apparel' },
-      { name: 'Ridding jackets' },
-    ],
-    [
-      { name: 'Contact us' },
-      { name: 'Terms & Conditions' },
-      { name: 'Privacy policy' },
-      { name: 'Sitemap' },
-    ],
-  ]
   return (
     <footer className={styles.footer}>
       <div className={styles.footerWrapper}>
@@ -43,21 +14,21 @@ function Footer() {
 
           <div className={styles.middleLists}>
             <ul className={styles.listWrapper}>
-              {allListItems[0].map((item, index) => (
+              {footerLinks[0].map((item, index) => (
                 <li key={index} className={styles.listItem}>
                   <Link href="/">{item.name}</Link>
                 </li>
               ))}
             </ul>
             <ul className={styles.listWrapper}>
-              {allListItems[1].map((item, index) => (
+              {footerLinks[1].map((item, index) => (
                 <li key={index} className={styles.listItem}>
                   <Link href="/">{item.name}</Link>
                 </li>
               ))}
             </ul>
             <ul className={styles.listWrapper}>
-              {allListItems[2].map((item, index) => (
+              {footerLinks[2].map((item, index) => (
                 <li key={index} className={styles.listItem}>
                   <Link href="/">{item.name}</Link>
                 </li>
@@ -77,7 +48,7 @@ function Footer() {
 
         <div className={styles.bottomSection}>
           <ul className={styles.horizontalLinks}>
-            {allListItems[3].map((item, index) => (
+            {footerLinks[3].map((item, index) => (
               <li key={index} className={styles.listItem}>
                 <Link href="/">{item.name}</Link>
               </li>

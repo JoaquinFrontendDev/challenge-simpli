@@ -7,12 +7,17 @@
   width: 100%;
 }
 
-.filterInput {
+.filterInput input {
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 10px;
   outline: none;
   transition: border 0.3s;
+  width: 100%;
+}
+
+.filterInput input:focus {
+  border-color: #903df7;
 }
 
 .filterInput input[type='number']::-webkit-inner-spin-button,
@@ -25,12 +30,20 @@
   -moz-appearance: textfield;
 }
 
-.filterInput:focus {
-  border-color: violet;
-}
-
 .errorText {
   color: red;
   font-size: 12px;
   margin-top: 4px;
+}
+
+@media (max-width: 720px) {
+  .filtersContainer {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .filterInput {
+    padding: 16px;
+    width: 100%;
+  }
 }

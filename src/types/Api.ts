@@ -4,7 +4,8 @@ import { type Lead } from './Lead'
 
 export interface LeadResponse {
   id: string
-  fullName: string
+  name: string
+  lastName: string
   email: string
   productId: string
   message?: string

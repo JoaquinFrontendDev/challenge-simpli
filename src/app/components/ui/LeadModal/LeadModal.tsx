@@ -5,9 +5,22 @@ import LeadService from '@/services/LeadService'
 import { type Lead } from '@/types/Lead'
 import { useRouter } from 'next/navigation'
 import { ApiError } from '@/errors/ApiError'
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { XCircle } from 'lucide-react'
 import Input from '../../shared/Input/Input'
+
+enum FormTexts {
+  TITLE = 'Interested in this product?',
+  DESCRIPTION = 'Please fill out the form below to receive offers and benefits on the purchase of this product.',
+  ERROR_MESSAGE = 'The email is already registered. Please try with a different one',
+}
+
+enum InputPlaceholders {
+  NAME = 'First Name',
+  LAST_NAME = 'Last Name',
+  EMAIL = 'Email',
+  PHONE = 'Phone',
+}
 
 interface LeadFormProps {
   productID: string
@@ -36,6 +49,10 @@ export default function LeadForm({ productID }: LeadFormProps) {
     }
   }
 
+  const handleCloseBanner = useCallback(() => {
+    setIsErrorBannerShowing(false)
+  }, [])
+
   return (
     <Formik
       initialValues={initialValues}
@@ -44,46 +61,41 @@ export default function LeadForm({ productID }: LeadFormProps) {
     >
       {({ handleSubmit, handleChange, values }) => (
         <form onSubmit={handleSubmit} className={styles.formContainer}>
-          <h2 className={styles.formTitle}>¿Interested on this product?</h2>
-          <p className={styles.formDescription}>
-            Please fill out the form below to receive offers and benefits on the
-            purchase of this product.
-          </p>
+          <h2 className={styles.formTitle}>{FormTexts.TITLE}</h2>
+          <p className={styles.formDescription}>{FormTexts.DESCRIPTION}</p>
           <div className={styles.inputRow}>
-            <Input name="name" placeholder="Name" onChange={handleChange} />
-
+            <Input
+              name="name"
+              placeholder={InputPlaceholders.NAME}
+              onChange={handleChange}
+            />
             <Input
               name="lastName"
-              placeholder="Apellido"
+              placeholder={InputPlaceholders.LAST_NAME}
               onChange={handleChange}
             />
           </div>
 
           <Input
             name="email"
-            placeholder="Correo Electrónico"
+            placeholder={InputPlaceholders.EMAIL}
             onChange={handleChange}
           />
-
           <Input
             name="phone"
             type="number"
-            placeholder="Teléfono"
+            placeholder={InputPlaceholders.PHONE}
             onChange={handleChange}
           />
+
           {isErrorBannerShowing && (
             <div className={styles.repeatedEmailBanner}>
               <XCircle
                 color="#C62729"
                 className={styles.closeButton}
-                onClick={() => {
-                  setIsErrorBannerShowing(false)
-                }}
+                onClick={handleCloseBanner}
               />
-              <span>
-                Th is email is already registered. Please try with a different
-                one
-              </span>
+              <span>{FormTexts.ERROR_MESSAGE}</span>
             </div>
           )}
           <button className={styles.formCta}>Submit</button>

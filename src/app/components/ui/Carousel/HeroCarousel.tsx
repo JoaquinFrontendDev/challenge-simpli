@@ -6,14 +6,9 @@ import styles from './HeroCarousel.module.css'
 import Image from 'next/image'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import Stepper from './Stepper/CarouselStepper'
+import { imageCarouselData } from '@/constants/ImageData'
 
 function HeroCarousel() {
-  const images = [
-    '/assets/images/hero-carousel-1.jpeg',
-    '/assets/images/hero-carousel-2.jpeg',
-    '/assets/images/hero-carousel-3.jpeg',
-  ]
-
   const [activeIndex, setActiveIndex] = useState(0)
 
   return (
@@ -27,7 +22,7 @@ function HeroCarousel() {
         renderIndicator={(clickHandler, isSelected, index, label) => null}
         showStatus={false}
       >
-        {images.map((image, index) => (
+        {imageCarouselData.map((image, index) => (
           <div className={styles.carouselImageContainer} key={index}>
             <Image src={image} alt="hero-carousel-image" fill />
           </div>

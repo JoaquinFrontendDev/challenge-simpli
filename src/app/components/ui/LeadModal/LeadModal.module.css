@@ -57,5 +57,6 @@
 @media (max-width: 650px) {
   .inputRow {
     flex-direction: column;
+    gap: 30px;
   }
 }

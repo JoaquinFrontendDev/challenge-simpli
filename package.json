@@ -11,6 +11,7 @@
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix"
   },
   "dependencies": {
+    "@testing-library/user-event": "^14.5.1",
     "@types/jest": "^29.5.4",
     "@types/node": "20.6.0",
     "@types/react": "18.2.21",

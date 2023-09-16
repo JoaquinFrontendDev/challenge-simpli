@@ -9,7 +9,7 @@
 }
 
 .tradeMark {
-  font-size: 40px;
+  font-size: clamp(20px, 2.5vw, 40px);
   font-weight: 600;
   text-decoration: none;
   color: #000;
@@ -22,8 +22,11 @@
 .navbarWrapper {
   display: flex;
   align-items: center;
-  font-size: 20px;
+  font-size: clamp(px, 2.5vw, 20px);
   gap: 40px;
+}
+
+.navbarWrapper a {
   cursor: pointer;
 }
 
@@ -43,12 +46,22 @@
   font-size: 20px;
 }
 
+.active {
+  color: #903df7;
+}
+
 @media (max-width: 1400px) {
   .headerContainer {
     padding: 20px 13px;
   }
 }
 
-.active {
-  color: #903df7;
+@media (max-width: 860px) {
+  .headerRightSide {
+    display: none;
+  }
+
+  .navbarWrapper {
+    gap: 20px;
+  }
 }

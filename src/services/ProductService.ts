@@ -16,7 +16,7 @@ const ProductService = {
       if (minPrice) params.minPrice = minPrice
       if (maxPrice) params.maxPrice = maxPrice
 
-      const { data } = await axiosInstance.get(`${productType}`, {
+      const { data } = await axiosInstance.get(`products/${productType}`, {
         params,
       })
       return data
@@ -28,7 +28,7 @@ const ProductService = {
   getProductById: async (productId: string, type: string) => {
     // eslint-disable-next-line no-useless-catch
     try {
-      const { data } = await axiosInstance.get(`${type}/${productId}`)
+      const { data } = await axiosInstance.get(`products/${type}/${productId}`)
       return data
     } catch (error) {
       throw error

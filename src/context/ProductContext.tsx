@@ -2,9 +2,14 @@
 
 import { createContext, useContext, useState } from 'react'
 
+enum ProductTypes {
+  BIKES = 'bikes',
+  ACCESSORIES = 'accessories',
+}
+
 interface ProductContextType {
-  productType: 'bikes' | 'accessories'
-  setProductType: React.Dispatch<React.SetStateAction<'bikes' | 'accessories'>>
+  productType: ProductTypes
+  setProductType: React.Dispatch<React.SetStateAction<ProductTypes>>
 }
 
 const ProductContext = createContext<ProductContextType | undefined>(undefined)
@@ -18,8 +23,8 @@ export const useProductContext = (): ProductContextType => {
 }
 
 export const ProductProvider: React.FC = ({ children }) => {
-  const [productType, setProductType] = useState<'bikes' | 'accessories'>(
-    'bikes',
+  const [productType, setProductType] = useState<ProductTypes>(
+    ProductTypes.BIKES,
   )
 
   return (
